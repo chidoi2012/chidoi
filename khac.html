@@ -2,18 +2,31 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Danh sách lớp 8A</title>
+<title>KHÁC - Chi Đội 8A</title>
 
 <style>
 body{
 font-family:Arial;
-background:#eef2ff;
 text-align:center;
+background:#eef2ff;
+}
+
+input{
+padding:10px;
+margin:10px;
+font-size:16px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
 }
 
 table{
 border-collapse:collapse;
 margin:auto;
+margin-top:30px;
 background:white;
 }
 
@@ -31,7 +44,21 @@ background:#dbeafe;
 
 <body>
 
-<h1>Danh sách Chi Đội 8A</h1>
+<h1>Thông tin khác</h1>
+
+<input id="ten" placeholder="Nhập tên">
+<input id="khac" placeholder="Nhập thông tin khác">
+
+<br>
+
+<button onclick="them()">Thêm</button>
+
+<h2>Danh sách đã nhập</h2>
+
+<ul id="danhsach"></ul>
+
+
+<h2>Dữ liệu lớp</h2>
 
 <table>
 
@@ -44,50 +71,75 @@ background:#dbeafe;
 </tr>
 
 <tr>
-<td>Đông</td>
-<td>Đông hiền hơ</td>
-<td>K vui lí nào</td>
+<td>Pa</td>
+<td>Koo cô nguy</td>
+<td>Như FB</td>
+<td>Nữ</td>
+<td>27/5/2012</td>
+</tr>
+
+<tr>
+<td>Mây</td>
+<td>Me Đà</td>
+<td>Da Mao</td>
+<td>Nữ</td>
+<td>7/3/2012</td>
+</tr>
+
+<tr>
+<td>Phương</td>
+<td>Ma Thi Châu</td>
+<td>Ma Thi Châu</td>
+<td>Nữ</td>
+<td>25/2/2012</td>
+</tr>
+
+<tr>
+<td>Chiến</td>
+<td>Rờ Bắc</td>
+<td>X</td>
 <td>Nam</td>
-<td>10/5/2012</td>
+<td>30/2/2012</td>
 </tr>
 
 <tr>
-<td>Hằng</td>
-<td>Sao Sung</td>
-<td>Sao Sung</td>
+<td>Vàng</td>
+<td>Ua NF</td>
+<td>X</td>
 <td>Nữ</td>
-<td>10/11/2012</td>
+<td>16/9/2012</td>
 </tr>
 
 <tr>
-<td>Ca</td>
-<td>Long Ca</td>
-<td>Gaaa</td>
+<td>Hà</td>
+<td>Nguyệt Dương Hạ</td>
+<td>Nắng Bạch Tuyết Không Cần Hoàng Tử</td>
 <td>Nữ</td>
-<td>6/8/2012</td>
-</tr>
-
-<tr>
-<td>An</td>
-<td>Xuna</td>
-<td>An UPUA</td>
-<td>Nam</td>
-<td>5/5/2012</td>
-</tr>
-
-<tr>
-<td>Sắc</td>
-<td>Phou Châu</td>
-<td>Zhii Sacc</td>
-<td>Nữ</td>
-<td>1/5/2012</td>
+<td>18/5/2012</td>
 </tr>
 
 </table>
 
-<br>
 
-<a href="index.html">⬅ Quay lại</a>
+<script>
+
+function them(){
+
+let ten=document.getElementById("ten").value
+let khac=document.getElementById("khac").value
+
+let li=document.createElement("li")
+
+li.innerText=ten+" - "+khac
+
+document.getElementById("danhsach").appendChild(li)
+
+document.getElementById("ten").value=""
+document.getElementById("khac").value=""
+
+}
+
+</script>
 
 </body>
 </html>
