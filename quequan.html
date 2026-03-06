@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quê Quán</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#eef2ff;
+}
+
+input{
+padding:10px;
+font-size:16px;
+margin:8px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Nhập Quê Quán</h1>
+
+<input id="ten" type="text" placeholder="Nhập tên">
+
+<br>
+
+<input id="que" type="text" placeholder="Nhập quê quán">
+
+<br>
+
+<button onclick="luu()">Lưu</button>
+
+<h2>Danh sách</h2>
+
+<ul id="danhsach"></ul>
+
+<a href="index.html">⬅ Quay lại</a>
+
+<script>
+
+function luu(){
+
+let ten=document.getElementById("ten").value;
+let que=document.getElementById("que").value;
+
+let li=document.createElement("li");
+
+li.innerText=ten + " - " + que;
+
+document.getElementById("danhsach").appendChild(li);
+
+document.getElementById("ten").value="";
+document.getElementById("que").value="";
+
+}
+
+</script>
+
+</body>
+</html>
