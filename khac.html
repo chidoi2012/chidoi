@@ -1,79 +1,52 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>KHÁC - Chi Đội 8A</title>
+<title>Thông tin khác</title>
 
 <style>
 body{
-font-family:Arial;
+font-family: Arial;
 text-align:center;
-background:#eef2ff;
-}
-
-input{
-padding:10px;
-margin:10px;
-font-size:16px;
-}
-
-button{
-padding:10px 20px;
-font-size:16px;
-cursor:pointer;
 }
 
 table{
 border-collapse:collapse;
 margin:auto;
-margin-top:30px;
-background:white;
+margin-bottom:40px;
 }
 
 th,td{
-border:2px solid black;
-padding:8px 12px;
+border:1px solid black;
+padding:6px 10px;
 }
 
-th{
-background:#dbeafe;
+h2{
+margin-top:40px;
 }
-
 </style>
+
 </head>
 
 <body>
 
-<h1>Thông tin khác</h1>
+<h1>Thông tin lớp</h1>
 
-<input id="ten" placeholder="Nhập tên">
-<input id="khac" placeholder="Nhập thông tin khác">
-
-<br>
-
-<button onclick="them()">Thêm</button>
-
-<h2>Danh sách đã nhập</h2>
-
-<ul id="danhsach"></ul>
-
-
-<h2>Dữ liệu lớp</h2>
+<h2>Bảng 1</h2>
 
 <table>
 
 <tr>
-<th>TÊN</th>
-<th>FACEBOOK</th>
-<th>TIKTOK</th>
-<th>NAM/NỮ</th>
-<th>NĂM SINH</th>
+<th>Tên</th>
+<th>Facebook</th>
+<th>TikTok</th>
+<th>Nam/Nữ</th>
+<th>Năm sinh</th>
 </tr>
 
 <tr>
 <td>Pa</td>
-<td>Koo cô nguy</td>
-<td>Như FB</td>
+<td>Koo cô nụy</td>
+<td>Như FP</td>
 <td>Nữ</td>
 <td>27/5/2012</td>
 </tr>
@@ -88,8 +61,8 @@ background:#dbeafe;
 
 <tr>
 <td>Phương</td>
-<td>Ma Thi Châu</td>
-<td>Ma Thi Châu</td>
+<td>Ma Thị Châu</td>
+<td>Ma Thị Châu</td>
 <td>Nữ</td>
 <td>25/2/2012</td>
 </tr>
@@ -121,25 +94,81 @@ background:#dbeafe;
 </table>
 
 
-<script>
+<h2>Bảng 2</h2>
 
-function them(){
+<table>
 
-let ten=document.getElementById("ten").value
-let khac=document.getElementById("khac").value
+<tr>
+<th>Tên</th>
+<th>Facebook</th>
+<th>TikTok</th>
+<th>Nam/Nữ</th>
+<th>Năm sinh</th>
+</tr>
 
-let li=document.createElement("li")
+<tr>
+<td>Đông</td>
+<td>Đông hiền hồ</td>
+<td>Ko vui tí nào</td>
+<td>Nam</td>
+<td>10/5/2011</td>
+</tr>
 
-li.innerText=ten+" - "+khac
+<tr>
+<td>Hằng</td>
+<td>Sao Sung</td>
+<td>Sao Sung</td>
+<td>Nữ</td>
+<td>10/11/2012</td>
+</tr>
 
-document.getElementById("danhsach").appendChild(li)
+<tr>
+<td>Ca</td>
+<td>Long Ca</td>
+<td>Gaaa</td>
+<td>Nữ</td>
+<td>6/8/2012</td>
+</tr>
 
-document.getElementById("ten").value=""
-document.getElementById("khac").value=""
+<tr>
+<td>An</td>
+<td>Xuna</td>
+<td>An UPUA</td>
+<td>Nam</td>
+<td>5/5/2012</td>
+</tr>
 
-}
+<tr>
+<td>Sắc</td>
+<td>Phou Chavy</td>
+<td>Zhi Sauu</td>
+<td>Nữ</td>
+<td>1/5/2012</td>
+</tr>
 
-</script>
+<tr>
+<td>Péo</td>
+<td>X</td>
+<td>X</td>
+<td>Nam</td>
+<td>16/7/2012</td>
+</tr>
+
+<tr>
+<td>Sâu</td>
+<td>Sau Vô Tới</td>
+<td>Free Box</td>
+<td>Nam</td>
+<td>19/6/2012</td>
+</tr>
+
+</table>
+
+<br><br>
+
+<a href="index.html">
+<button>Quay về trang chính</button>
+</a>
 
 </body>
 </html>
