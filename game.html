@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Game</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#eef2ff;
+}
+
+input{
+padding:10px;
+font-size:16px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Nhập Game Yêu Thích</h1>
+
+<input id="ten" type="text" placeholder="Nhập tên bạn">
+
+<br>
+
+<input id="game" type="text" placeholder="Nhập game bạn thích">
+
+<br>
+
+<button onclick="luu()">Lưu</button>
+
+<h2>Danh sách game</h2>
+
+<ul id="danhsach"></ul>
+
+<a href="index.html">⬅ Quay lại</a>
+
+<script>
+
+function luu(){
+
+let ten=document.getElementById("ten").value;
+let game=document.getElementById("game").value;
+
+let li=document.createElement("li");
+
+li.innerText = ten + " - " + game;
+
+document.getElementById("danhsach").appendChild(li);
+
+document.getElementById("ten").value="";
+document.getElementById("game").value="";
+
+}
+
+</script>
+
+</body>
+</html>
