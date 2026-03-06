@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>SĐT</title>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#eef2ff;
+}
+
+input{
+padding:10px;
+font-size:16px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Nhập số điện thoại</h1>
+
+<input id="sdt" type="text" placeholder="Nhập số điện thoại">
+
+<br>
+
+<button onclick="luu()">Lưu</button>
+
+<h2>Danh sách</h2>
+
+<ul id="danhsach"></ul>
+
+<a href="index.html">⬅ Quay lại</a>
+
+<script>
+
+function luu(){
+
+let sdt=document.getElementById("sdt").value;
+
+let li=document.createElement("li");
+
+li.innerText=sdt;
+
+document.getElementById("danhsach").appendChild(li);
+
+document.getElementById("sdt").value="";
+
+}
+
+</script>
+
+</body>
+</html>
