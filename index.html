@@ -250,29 +250,26 @@ nameInput.addEventListener('input', function () {
     this.value = value;
 });
 
-// ĐĂNG NHẬP
-button.addEventListener('click', function () {
-
+// ĐOẠN ĐĂNG NHẬP SAU KHI SỬA
+button.addEventListener('click', function() {
     const username = nameInput.value;
     const birthday = dateInput.value;
 
-    const user = users.find(u =>
-        u.username === username &&
+    const user = users.find(u => 
+        u.username === username && 
         u.birthday === birthday
     );
 
-    if(user){
-
-
-        window.location.href = "home.html";;
-
+    if (user) {
+        // Đã bỏ alert("Đăng nhập thành công!")
+        // Chuyển hướng ngay lập tức đến trang home.html
+        window.location.href = "home.html";
     } else {
-
-        alert("Sai thông tin!");
-
+        // Vẫn giữ alert báo lỗi để người dùng biết nhập sai ở đâu
+        alert("Sai thông tin đăng nhập!");
     }
-
 });
+
 
 </script>
 
