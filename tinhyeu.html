@@ -1,1 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I LOVE YOU</title>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #b30838 100%);
+        }
 
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: white;
+            position: relative; /* Để làm mốc cho nút Back */
+        }
+
+        /* NÚT BACK */
+        .btn-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateX(-3px);
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 25px;
+            width: 330px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            margin-top: 40px; /* Chừa chỗ cho nút Back trên mobile */
+        }
+
+        .input-pair {
+            display: flex;
+            justify-content: center;
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            margin: 10px 0;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+
+        button.btn-main {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* PHẦN LỊCH SỬ */
+        .history-box {
+            width: 330px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .btn-delete-selected {
+            color: #ff9999;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .history-list {
+            max-height: 250px;
+            overflow-y: auto;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            margin-bottom: 8px;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .history-item input[type="checkbox"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .item-info {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        #result { font-size: 32px; margin: 15px 0; font-weight: 800; color: white; }
+    </style>
+</head>
+<body>
+
+    <a href="home.html" class="btn-back">
+        <span>←</span> Home
+    </a>
+
+    <div class="main-card">
+        <h2 style="margin:0">I LOVE YOU ❤️</h2>
+        <div class="input-pair">
+            <input type="number" id="d1" placeholder="NGÀY">
+            <span style="color:#ccc">/</span>
+            <input type="number" id="m1" placeholder="THÁNG">
+        </div>
+        <div style="font-size: 20px;">💖</div>
+        <div class="input-pair">
+            <input type="number" id="d2" placeholder="NGÀY">
+            <span style="color:#ccc">/</span>
+            <input type="number" id="m2" placeholder="THÁNG">
+        </div>
+        <button class="btn-main" onclick="calculate()">KIỂM TRA</button>
+        <div id="result">??%</div>
+    </div>
+
+    <div class="history-box">
+        <div class="history-header">
+            <span>LỊCH SỬ</span>
+            <span class="btn-delete-selected" onclick="deleteSelected()">Xóa lịch sử</span>
+        </div>
+        <ul class="history-list" id="historyList"></ul>
+    </div>
+
+    <script>
+        const ADMIN_KEY = "sungtuananh";
+
+        window.onload = loadHistory;
+
+        function calculate() {
+            const d1 = document.getElementById('d1').value;
+            const m1 = document.getElementById('m1').value;
+            const d2 = document.getElementById('d2').value;
+            const m2 = document.getElementById('m2').value;
+
+            if (!d1 || !m1 || !d2 || !m2) return alert("Vui lòng nhập đầy đủ!");
+
+            let score = ((parseInt(d1) + parseInt(m1) + parseInt(d2) + parseInt(m2)) * 23) % 41 + 59;
+            document.getElementById('result').innerText = score + "%";
+
+            let history = JSON.parse(localStorage.getItem('love_v4')) || [];
+            let infoKey = `${d1}/${m1} & ${d2}/${m2}`;
+
+            let existingIndex = history.findIndex(item => item.info === infoKey);
+            if (existingIndex !== -1) {
+                history.splice(existingIndex, 1);
+            }
+
+            history.unshift({ id: Date.now(), info: infoKey, val: score + "%" });
+            localStorage.setItem('love_v4', JSON.stringify(history));
+            loadHistory();
+        }
+
+        function loadHistory() {
+            const list = document.getElementById('historyList');
+            let history = JSON.parse(localStorage.getItem('love_v4')) || [];
+            list.innerHTML = history.map(item => `
+                <li class="history-item">
+                    <input type="checkbox" class="del-check" data-id="${item.id}">
+                    <div class="item-info">
+                        <span>${item.info}</span>
+                        <strong>${item.val}</strong>
+                    </div>
+                </li>
+            `).join('');
+        }
+
+        function deleteSelected() {
+            const checkboxes = document.querySelectorAll('.del-check:checked');
+            if (checkboxes.length === 0) return alert("Bạn chưa chọn mục nào!");
+
+            let pass = prompt("HỆ THỐNG BẢO MẬT\nNhập mật mã để xóa:");
+            if (pass === ADMIN_KEY) {
+                let history = JSON.parse(localStorage.getItem('love_v4')) || [];
+                const idsToDelete = Array.from(checkboxes).map(cb => parseInt(cb.getAttribute('data-id')));
+                let newHistory = history.filter(item => !idsToDelete.includes(item.id));
+                localStorage.setItem('love_v4', JSON.stringify(newHistory));
+                loadHistory();
+                alert("Đã xóa thành công.");
+            } else if (pass !== null) {
+                alert("Sai mật mã!");
+            }
+        }
+    </script>
+</body>
+</html>
