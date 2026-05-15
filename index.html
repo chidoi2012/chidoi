@@ -1,33 +1,281 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<title>CHI ĐỘI 8A</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Đăng Nhập</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-flex-direction:column;
-font-family:Arial;
-}
-button{
-margin:6px;
-padding:10px 20px;
-}
-</style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+}
+
+.login-box{
+    width:350px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:25px;
+    padding:35px 30px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.login-box h1{
+    color:white;
+    margin-bottom:30px;
+    letter-spacing:3px;
+    font-size:32px;
+}
+
+.input-box{
+    position:relative;
+    margin:20px 0;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px 15px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    font-size:15px;
+    background:rgba(255,255,255,0.85);
+    transition:0.3s;
+}
+
+.input-box input:focus{
+    transform:scale(1.03);
+    box-shadow:0 0 10px rgba(255,255,255,0.6);
+}
+
+/* Ô ngày tháng năm */
+
+.input-box input[type="date"]{
+    color:#666;
+}
+
+.input-box input[type="date"]:before{
+    content:"NGÀY / THÁNG / NĂM";
+    color:#777;
+    position:absolute;
+    left:15px;
+}
+
+.input-box input[type="date"]:focus:before,
+.input-box input[type="date"]:valid:before{
+    display:none;
+}
+
+.note{
+    margin-top:10px;
+    color:white;
+    font-size:13px;
+    line-height:1.5;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    color:#0099ff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0099ff;
+    color:white;
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.footer{
+    margin-top:18px;
+    color:white;
+    font-size:13px;
+}
+
+</style>
 </head>
 
 <body>
 
-<h1>CHI ĐỘI 8A</h1>
+<div class="login-box">
 
-<a href="sdt.html"><button>SĐT</button></a>
-<a href="quequan.html"><button>QUÊ QUÁN</button></a>
-<a href="game.html"><button>GAME</button></a>
-<a href="khac.html"><button>KHÁC</button></a>
+    <h1>ĐĂNG NHẬP</h1>
+
+    <div class="input-box">
+        <input type="text" placeholder="HỌ TÊN">
+    </div>
+
+    <div class="input-box">
+        <input type="date" min="2011-01-01" max="2012-12-31" required>
+    </div>
+
+    <div class="note">
+        Lưu ý: Hãy chọn đúng ngày sinh và ghi đúng họ tên <h4>[Nếu không sẽ không ĐANG NHẬP được]</h4>
+    </div>
+
+    <button>Đăng nhập</button>
+
+    <div class="footer">
+        © 2026 Login Form
+    </div>
+
+</div>
+
+<script>
+
+// DATA TÀI KHOẢN
+const users = [
+
+{ username:"tanphuan", birthday:"2012-05-05" },
+{ username:"dotuananh", birthday:"2012-10-19" },
+{ username:"sungtuananh", birthday:"2012-03-10" },
+{ username:"maihoaban", birthday:"2012-03-23" },
+{ username:"sungthimaica", birthday:"2012-08-06" },
+{ username:"lythichau", birthday:"2012-05-12" },
+{ username:"lothichien", birthday:"2012-12-13" },
+{ username:"sungxuanchien", birthday:"2012-02-20" },
+{ username:"vangthicho", birthday:"2012-07-14" },
+{ username:"lythichua", birthday:"2011-08-15" },
+{ username:"haulminhchung", birthday:"2012-12-11" },
+{ username:"vangxuandong", birthday:"2012-05-10" },
+{ username:"mamigiang", birthday:"2012-02-20" },
+{ username:"lothiha", birthday:"2012-05-18" },
+{ username:"luthithanhhang", birthday:"2012-01-10" },
+{ username:"sungthilan", birthday:"2012-05-30" },
+{ username:"vangthily", birthday:"2012-08-14" },
+{ username:"lothimay", birthday:"2012-03-07" },
+{ username:"giangmiminh", birthday:"2012-08-26" },
+{ username:"vangvanngoc", birthday:"2012-08-03" },
+{ username:"vangthipa", birthday:"2012-05-27" },
+{ username:"luvanpao", birthday:"2012-07-16" },
+{ username:"hangmiphu", birthday:"2012-01-12" },
+{ username:"lothithanhphuong", birthday:"2012-02-25" },
+{ username:"vangthisau", birthday:"2012-05-01" },
+{ username:"lovanson", birthday:"2012-07-08" },
+{ username:"sungthithu", birthday:"2012-01-29" },
+{ username:"hangthikimtrang", birthday:"2012-08-04" },
+{ username:"giangthivang", birthday:"2012-09-16" },
+{ username:"lythixay", birthday:"2012-03-20" },
+{ username:"sungvanxuan", birthday:"2012-01-23" },
+
+{ username:"lythidinh", birthday:"2012-09-03" },
+{ username:"sungducgiang", birthday:"2012-02-23" },
+{ username:"manguyengiap", birthday:"2012-07-17" },
+{ username:"sungxuangiong", birthday:"2012-06-12" },
+{ username:"vangsuaha", birthday:"2012-01-11" },
+{ username:"hangthihoa", birthday:"2012-05-29" },
+{ username:"lothihoa", birthday:"2012-06-16" },
+{ username:"lythihoa", birthday:"2012-06-28" },
+{ username:"vangthuyhuong", birthday:"2012-09-05" },
+{ username:"vanglongkhach", birthday:"2012-01-15" },
+{ username:"giangthilan", birthday:"2012-09-16" },
+{ username:"sungthilan", birthday:"2012-10-14" },
+{ username:"hangthilien", birthday:"2012-12-04" },
+{ username:"maxuanlong", birthday:"2012-03-01" },
+{ username:"hangmilung", birthday:"2012-05-07" },
+{ username:"sungmilu", birthday:"2012-05-17" },
+{ username:"lythimay", birthday:"2012-10-14" },
+{ username:"lymiminh", birthday:"2012-12-06" },
+{ username:"mathuynguyet", birthday:"2012-08-16" },
+{ username:"vangminhnhat", birthday:"2012-07-04" },
+{ username:"mavanquoc", birthday:"2012-12-05" },
+{ username:"giangvanquy", birthday:"2012-01-10" },
+{ username:"giangmisang", birthday:"2012-01-01" },
+{ username:"vangmisang", birthday:"2012-08-01" },
+{ username:"hangthisanh", birthday:"2012-08-15" },
+{ username:"giangquocson", birthday:"2012-02-05" },
+{ username:"hangvansy", birthday:"2012-07-01" },
+{ username:"maxuanthanh", birthday:"2012-11-27" },
+{ username:"hangxuanthanh", birthday:"2012-01-04" },
+{ username:"mathitran", birthday:"2012-05-08" },
+{ username:"lytuantu", birthday:"2012-10-18" },
+{ username:"hangmitua", birthday:"2012-02-28" },
+{ username:"hangmitua", birthday:"2012-11-14" }
+
+];
+
+// INPUT
+const nameInput = document.querySelector('input[type="text"]');
+const dateInput = document.querySelector('input[type="date"]');
+const button = document.querySelector('button');
+
+// CHUYỂN THÀNH CHỮ THƯỜNG KHÔNG DẤU
+nameInput.addEventListener('input', function () {
+
+    let value = this.value.toLowerCase();
+
+    value = value.normalize("NFD")
+                 .replace(/[\u0300-\u036f]/g, "");
+
+    value = value.replace(/đ/g, "d");
+
+    value = value.replace(/[^a-z]/g, "");
+
+    this.value = value;
+});
+
+// ĐĂNG NHẬP
+button.addEventListener('click', function () {
+
+    const username = nameInput.value;
+    const birthday = dateInput.value;
+
+    const user = users.find(u =>
+        u.username === username &&
+        u.birthday === birthday
+    );
+
+    if(user){
+
+        alert("Đăng nhập thành công!");
+
+        window.location.href = "http://localhost:8158/home.html";;
+
+    } else {
+
+        alert("Sai thông tin!");
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
