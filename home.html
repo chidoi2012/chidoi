@@ -1,0 +1,143 @@
+<!-- TẠO FILE home.html -->
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trang Chủ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:90%;
+    max-width:400px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+    color:white;
+}
+
+.title{
+    text-align:center;
+    font-size:30px;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.2);
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:18px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.card h2{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    line-height:1.5;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    color:#0099ff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0099ff;
+    color:white;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">
+        TRANG CHỦ
+    </div>
+
+    <div class="card">
+        <h2>👤 Hồ sơ</h2>
+        <p>Xem thông tin cá nhân và dữ liệu của bạn.</p>
+    </div>
+
+    <div class="card">
+        <h2>📅 Ngày sinh</h2>
+        <p>Kiểm tra ngày tháng năm sinh đã đăng ký.</p>
+    </div>
+
+    <div class="card">
+        <h2>❤️ Tình trạng</h2>
+        <p>Cập nhật và quản lý thông tin.</p>
+    </div>
+
+    <button onclick="logout()">
+        Đăng xuất
+    </button>
+
+    <div class="footer">
+        © 2026 Home Page
+    </div>
+
+</div>
+
+<script>
+
+function logout(){
+
+    alert("Đã đăng xuất!");
+
+    window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>
