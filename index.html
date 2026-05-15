@@ -199,11 +199,16 @@ loginBtn.addEventListener('click', function() {
         u.birthday === birthday
     );
 
-    if (user) {
-        // KHÔNG CÓ ALERT Ở ĐÂY NỮA
+        if (user) {
         window.location.href = "home.html";
+    } else {
+        // Không hiện alert nữa
+        // Tùy chọn: Tự động xóa trắng ô nhập tên để người dùng nhập lại
+        nameInput.value = "";
+        dateInput.value = "";
+        nameInput.focus(); // Đưa con trỏ chuột về lại ô nhập tên
     }
-});
+
 </script>
 </body>
 </html>
