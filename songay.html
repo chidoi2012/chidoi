@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Số Ngày Tự Động</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .container {
+            width: 100%; max-width: 400px;
+            background: white; border-radius: 20px; padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; position: relative;
+        }
+        .back-btn {
+            position: absolute; top: 20px; left: 20px;
+            padding: 5px 12px; background: #f0f0f0; border: 1px solid #ddd;
+            border-radius: 5px; text-decoration: none; color: #333; font-size: 12px; font-weight: 600;
+        }
+        .header-title { font-size: 20px; font-weight: 600; margin: 20px 0 15px 0; text-decoration: underline; }
 
+        /* Phần thiết lập ngày sinh */
+        .settings {
+            background: #fff9e6; padding: 10px; border-radius: 10px; margin-bottom: 20px;
+            border: 1px dashed #ffcc00;
+        }
+        .settings p { font-size: 11px; margin-bottom: 5px; color: #666; }
+        input[type="date"] { padding: 5px; border-radius: 5px; border: 1px solid #ccc; font-size: 13px; }
+
+        .date-display {
+            background: #f8f9fa; border: 2px solid #333; border-radius: 10px;
+            padding: 10px; font-size: 18px; font-weight: 600; margin-bottom: 25px;
+        }
+        .stat-group { margin-bottom: 20px; }
+        .stat-label { font-weight: 600; font-size: 14px; margin-bottom: 5px; display: block; text-transform: uppercase; }
+        .stat-box {
+            background: #fff; border: 2px solid #333; border-radius: 8px;
+            padding: 12px; font-size: 22px; font-weight: 600; color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="home.html" class="back-btn">⬅ BACK</a>
+    <div class="header-title">SỐ NGÀY</div>
+
+    <div class="settings">
+        <p>Thiết lập ngày sinh của bạn (Sẽ tự lưu):</p>
+        <input type="date" id="birthDateInput" onchange="saveAndCalc()">
+    </div>
+
+    <div class="date-display" id="infoText">Đang tính toán...</div>
+
+    <div class="stat-group">
+        <span class="stat-label">TỔNG SỐ NGÀY</span>
+        <div class="stat-box" id="resDays">0</div>
+    </div>
+
+    <div class="stat-group">
+        <span class="stat-label">TỔNG SỐ THÁNG</span>
+        <div class="stat-box" id="resMonths">0</div>
+    </div>
+
+    <div class="stat-group">
+        <span class="stat-label">TỔNG SỐ NĂM</span>
+        <div class="stat-box" id="resYears">0</div>
+    </div>
+</div>
+
+<script>
+    // 1. Khi vừa mở trang, kiểm tra xem đã có ngày sinh lưu chưa
+    window.onload = function() {
+        const savedBirth = localStorage.getItem('userBirthDate');
+        if (savedBirth) {
+            document.getElementById('birthDateInput').value = savedBirth;
+            calculateLife(savedBirth);
+        } else {
+            document.getElementById('infoText').innerText = "Vui lòng chọn ngày sinh";
+        }
+    };
+
+    // 2. Lưu ngày sinh và tính toán
+    function saveAndCalc() {
+        const birthValue = document.getElementById('birthDateInput').value;
+        localStorage.setItem('userBirthDate', birthValue);
+        calculateLife(birthValue);
+    }
+
+    // 3. Hàm tính toán chính
+    function calculateLife(birthInput) {
+        const today = new Date();
+        const birthDate = new Date(birthInput);
+        
+        if (isNaN(birthDate)) return;
+
+        const diffTime = today - birthDate;
+        const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+        
+        if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+            years--;
+            months += 12;
+        }
+
+        const totalMonths = (years * 12) + months;
+
+        // Hiển thị
+        document.getElementById('infoText').innerText = `Sinh ngày: ${birthDate.getDate()}/${birthDate.getMonth()+1}/${birthDate.getFullYear()}`;
+        document.getElementById('resDays').innerText = totalDays.toLocaleString();
+        document.getElementById('resMonths').innerText = totalMonths.toLocaleString();
+        document.getElementById('resYears').innerText = years;
+    }
+</script>
+
+</body>
+  </html>
+  
