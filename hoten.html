@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Họ Tên</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            min-height: 100vh;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            height: 95vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .back-btn {
+            padding: 8px 12px;
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+        }
+
+        .page-title {
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .search-box {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100px;
+            font-size: 12px;
+        }
+
+        .table-container {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            position: sticky;
+            top: 0;
+            background: #e9ecef;
+            color: #333;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #dee2e6;
+            font-size: 13px;
+            z-index: 5;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            color: #444;
+        }
+
+        tr:nth-child(even) { background-color: #fafafa; }
+        tr:hover { background-color: #f1f1f1; }
+
+        .col-stt { width: 50px; text-align: center; }
+        .col-namsinh { width: 100px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <a href="home.html" class="back-btn">⬅ BACK</a>
+        <div class="page-title">HỌ TÊN</div>
+        <input type="text" id="searchInput" onkeyup="filterTable()" class="search-box" placeholder="Tìm...">
+    </div>
+
+    <div class="table-container">
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th class="col-stt">STT</th>
+                    <th>HỌ VÀ TÊN</th>
+                    <th class="col-namsinh">NĂM SINH</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="col-stt">1</td><td>TẨN PHỤ AN</td><td class="col-namsinh">5/5/2012</td></tr>
+                <tr><td class="col-stt">2</td><td>ĐỖ TUẤN ANH</td><td class="col-namsinh">19/10/2012</td></tr>
+                <tr><td class="col-stt">3</td><td>SÙNG TUẤN ANH</td><td class="col-namsinh">10/3/2012</td></tr>
+                <tr><td class="col-stt">4</td><td>MAI HOA BAN</td><td class="col-namsinh">23/3/2012</td></tr>
+                <tr><td class="col-stt">5</td><td>SÙNG THỊ MAI CA</td><td class="col-namsinh">6/8/2012</td></tr>
+                <tr><td class="col-stt">6</td><td>LY THỊ CHẤU</td><td class="col-namsinh">12/5/2012</td></tr>
+                <tr><td class="col-stt">7</td><td>LÒ THỊ CHIÊN</td><td class="col-namsinh">13/12/2012</td></tr>
+                <tr><td class="col-stt">8</td><td>SÙNG XUÂN CHIẾN</td><td class="col-namsinh">20/2/2012</td></tr>
+                <tr><td class="col-stt">9</td><td>VÀNG THỊ CHỢ</td><td class="col-namsinh">14/7/2012</td></tr>
+                <tr><td class="col-stt">10</td><td>LY THỊ CHÚA</td><td class="col-namsinh">15/8/2011</td></tr>
+                <tr><td class="col-stt">11</td><td>HẦU MINH CHUNG</td><td class="col-namsinh">11/12/2012</td></tr>
+                <tr><td class="col-stt">12</td><td>VÀNG XUÂN ĐÔNG</td><td class="col-namsinh">10/5/2012</td></tr>
+                <tr><td class="col-stt">13</td><td>MA MÍ GIÀNG</td><td class="col-namsinh">20/2/2012</td></tr>
+                <tr><td class="col-stt">14</td><td>LÒ THỊ HÀ</td><td class="col-namsinh">18/5/2012</td></tr>
+                <tr><td class="col-stt">15</td><td>LÙ THỊ THANH HẰNG</td><td class="col-namsinh">10/1/2012</td></tr>
+                <tr><td class="col-stt">16</td><td>SÙNG THỊ LAN</td><td class="col-namsinh">30/5/2012</td></tr>
+                <tr><td class="col-stt">17</td><td>VÀNG THỊ LY</td><td class="col-namsinh">14/8/2012</td></tr>
+                <tr><td class="col-stt">18</td><td>LÒ THỊ MÀY</td><td class="col-namsinh">7/3/2012</td></tr>
+                <tr><td class="col-stt">19</td><td>GIÀNG MÍ MINH</td><td class="col-namsinh">26/8/2012</td></tr>
+                <tr><td class="col-stt">20</td><td>VÀNG VĂN NGỌC</td><td class="col-namsinh">3/8/2012</td></tr>
+                <tr><td class="col-stt">21</td><td>VÀNG THỊ PÀ</td><td class="col-namsinh">27/5/2012</td></tr>
+                <tr><td class="col-stt">22</td><td>LÙ VĂN PÁO</td><td class="col-namsinh">16/7/2012</td></tr>
+                <tr><td class="col-stt">23</td><td>HẠNG MÍ PHỨ</td><td class="col-namsinh">12/1/2012</td></tr>
+                <tr><td class="col-stt">24</td><td>LÒ THỊ THANH PHƯƠNG</td><td class="col-namsinh">25/2/2012</td></tr>
+                <tr><td class="col-stt">25</td><td>VÀNG THỊ SAU</td><td class="col-namsinh">1/5/2012</td></tr>
+                <tr><td class="col-stt">26</td><td>GIÀNG MÍ SÁU</td><td class="col-namsinh">10/6/2012</td></tr>
+                <tr><td class="col-stt">27</td><td>LÒ VĂN SƠN</td><td class="col-namsinh">8/7/2012</td></tr>
+                <tr><td class="col-stt">28</td><td>SÙNG THỊ THU</td><td class="col-namsinh">29/1/2012</td></tr>
+                <tr><td class="col-stt">29</td><td>HẠNG THỊ KIM TRANG</td><td class="col-namsinh">4/8/2012</td></tr>
+                <tr><td class="col-stt">30</td><td>GIÀNG THỊ VÀNG</td><td class="col-namsinh">16/9/2012</td></tr>
+                <tr><td class="col-stt">31</td><td>LY THỊ XAY</td><td class="col-namsinh">20/3/2012</td></tr>
+                <tr><td class="col-stt">32</td><td>SÙNG VÂN XUÂN</td><td class="col-namsinh">23/1/2012</td></tr>
+                <tr><td class="col-stt">33</td><td>LY THỊ DÍNH</td><td class="col-namsinh">3/9/2012</td></tr>
+                <tr><td class="col-stt">34</td><td>SÙNG ĐỨC GIANG</td><td class="col-namsinh">23/2/2012</td></tr>
+                <tr><td class="col-stt">35</td><td>MA NGUYÊN GIÁP</td><td class="col-namsinh">17/7/2012</td></tr>
+                <tr><td class="col-stt">36</td><td>SÙNG XUÂN GIỒNG</td><td class="col-namsinh">12/6/2012</td></tr>
+                <tr><td class="col-stt">37</td><td>VÀNG SÚA HÀ</td><td class="col-namsinh">11/1/2012</td></tr>
+                <tr><td class="col-stt">38</td><td>HẠNG THỊ HOA</td><td class="col-namsinh">29/5/2012</td></tr>
+                <tr><td class="col-stt">39</td><td>LÒ THỊ HOA</td><td class="col-namsinh">16/6/2012</td></tr>
+                <tr><td class="col-stt">40</td><td>LY THỊ HOA</td><td class="col-namsinh">28/6/2012</td></tr>
+                <tr><td class="col-stt">41</td><td>VÀNG THÚY HƯƠNG</td><td class="col-namsinh">5/9/2012</td></tr>
+                <tr><td class="col-stt">42</td><td>VÀNG LONG KHÁCH</td><td class="col-namsinh">15/1/2012</td></tr>
+                <tr><td class="col-stt">43</td><td>GIÀNG THỊ LAN</td><td class="col-namsinh">16/9/2012</td></tr>
+                <tr><td class="col-stt">44</td><td>SÙNG THỊ LAN</td><td class="col-namsinh">14/10/2012</td></tr>
+                <tr><td class="col-stt">45</td><td>HẠNG THỊ LIÊN</td><td class="col-namsinh">4/12/2012</td></tr>
+                <tr><td class="col-stt">46</td><td>MA XUÂN LONG</td><td class="col-namsinh">1/3/2012</td></tr>
+                <tr><td class="col-stt">47</td><td>HẠNG MÍ LÙNG</td><td class="col-namsinh">7/5/2012</td></tr>
+                <tr><td class="col-stt">48</td><td>SÙNG MÍ LỬ</td><td class="col-namsinh">17/5/2012</td></tr>
+                <tr><td class="col-stt">49</td><td>LY THỊ MẢY</td><td class="col-namsinh">14/10/2012</td></tr>
+                <tr><td class="col-stt">50</td><td>LY MÍ MÌNH</td><td class="col-namsinh">6/12/2012</td></tr>
+                <tr><td class="col-stt">51</td><td>MA THÚY NGUYỆT</td><td class="col-namsinh">16/8/2012</td></tr>
+                <tr><td class="col-stt">52</td><td>VÀNG MINH NHẤT</td><td class="col-namsinh">4/7/2012</td></tr>
+                <tr><td class="col-stt">53</td><td>MA VĂN QUỐC</td><td class="col-namsinh">5/12/2012</td></tr>
+                <tr><td class="col-stt">54</td><td>GIÀNG VĂN QUÝ</td><td class="col-namsinh">10/1/2012</td></tr>
+                <tr><td class="col-stt">55</td><td>GIÀNG MÍ SÁNG</td><td class="col-namsinh">1/1/2012</td></tr>
+                <tr><td class="col-stt">56</td><td>VÀNG MÍ SÁNG</td><td class="col-namsinh">1/8/2012</td></tr>
+                <tr><td class="col-stt">57</td><td>HẠNG THỊ SANH</td><td class="col-namsinh">15/8/2012</td></tr>
+                <tr><td class="col-stt">58</td><td>GIÀNG QUỐC SƠN</td><td class="col-namsinh">5/2/2012</td></tr>
+                <tr><td class="col-stt">59</td><td>HẠNG VĂN SỸ</td><td class="col-namsinh">1/7/2012</td></tr>
+                <tr><td class="col-stt">60</td><td>MA XUÂN THANH</td><td class="col-namsinh">27/11/2012</td></tr>
+                <tr><td class="col-stt">61</td><td>HẠNG XUÂN THÀNH</td><td class="col-namsinh">4/1/2012</td></tr>
+                <tr><td class="col-stt">62</td><td>MA THỊ TRẤN</td><td class="col-namsinh">8/5/2012</td></tr>
+                <tr><td class="col-stt">63</td><td>LY TUẤN TÚ</td><td class="col-namsinh">18/10/2012</td></tr>
+                <tr><td class="col-stt">64</td><td>HẠNG MÍ TỦA</td><td class="col-namsinh">28/2/2012</td></tr>
+                <tr><td class="col-stt">65</td><td>HẠNG MÍ TỦA</td><td class="col-namsinh">14/11/2012</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
