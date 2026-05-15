@@ -100,9 +100,11 @@
     <div class="input-box">
         <input type="text" placeholder="HỌ TÊN" id="nameInput">
     </div>
-    <div class="input-box">
-        <input type="date" min="2011-01-01" max="2012-12-31" id="dateInput" required>
-    </div>
+<div class="input-box">
+    <input type="text" placeholder="NGÀY/THÁNG/NĂM" id="dateInput" 
+           onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
+</div>
+
     <div class="note">
         Lưu ý: Hãy chọn đúng ngày sinh và ghi đúng họ tên <h4>[Nếu không sẽ không ĐĂNG NHẬP được]</h4>
     </div>
